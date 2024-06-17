@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sample SaaS App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Bootstrap CSS -->
+     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+     
+     <style>
+        body {
+            background-color: #f7f7f7;
+        }
+
+        .card {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .card-title {
+            margin-bottom: 20px;
+        }
+
+        .btn-block {
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center align-items-center" style="height:100vh">
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-body text-center">
+                    {% if is_authenticated %}
+                        <h1>Welcome, {{ first_name }} {{ last_name }}!</h1>
+                        <img src="{{ profileUrl }}" alt="Profile Picture" class="img-fluid">
+                        <p>Your ID: {{ name_id }}</p>
+                        <p>Your Email ID: {{ email }}</p>
+                        
+                        <h2>User Attributes received from Okta IdP</h2>
+                        
+                        <div class="card-body text-justify">
+                            <p>{{ attributes}}</p>
+                            <hr>
+                        </div>
+                        
+                        
+                        <h2>SAML Authentication Response</h2>
+                        
+                        <div class="card-body text-justify">
+                            <pre>{{ authn_response_string}}</pre>
+                            <hr>
+                        </div>
+
+                        <a href="/logout" class="btn btn-primary btn-block">Logout</a>
+
+                    {% else %}
+                        <h1>Sample SaaS App</h1>
+                        <a href="/login" class="btn btn-primary btn-block">Login with SAML SSO</a>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ <!-- Bootstrap JS and dependencies -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
