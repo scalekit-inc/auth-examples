@@ -40,8 +40,9 @@ This is an app to understand how to configure Okta SAML for login. This is built
 
 2. Access the application at `https://localhost:8443`
 
-### Enabling Debug Mode
+## Enabling Debug Mode
 
-    ```bash
-    python main.py --debug
-    ```
+```bash
+python main.py --debug
+```
+
